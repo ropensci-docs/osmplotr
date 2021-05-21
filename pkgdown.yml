@@ -1,0 +1,12 @@
+pandoc: '2.5'
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  basic-maps: basic-maps.html
+  data-maps: data-maps.html
+  maps-with-ocean: maps-with-ocean.html
+last_built: 2021-07-17T11:34Z
+urls:
+  reference: https://docs.ropensci.org/osmplotr/reference
+  article: https://docs.ropensci.org/osmplotr/articles
+

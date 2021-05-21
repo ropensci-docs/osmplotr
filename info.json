@@ -1,0 +1,12 @@
+{
+  "commit": {
+    "commit": "32cb6017f89e939de2cfee4b29f57b021524081e",
+    "author": "mpadge <mark.padgham@email.com>",
+    "time": "2021-05-21 12:03:55",
+    "files": 3,
+    "merge": false,
+    "message": ".Rbuildignore .hooks\n"
+  },
+  "remote": "https://github.com/ropensci/osmplotr",
+  "pkg": "osmplotr"
+}
