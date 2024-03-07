@@ -1,0 +1,12 @@
+{
+  "commit": {
+    "commit": "d3e3580e03b435c66fb9c0b49a5dea449c89f7fe",
+    "author": "mpadge <mark.padgham@email.com>",
+    "time": "2024-02-06 11:33:52",
+    "files": 4,
+    "merge": false,
+    "message": "update actions/checkout -> v4\n"
+  },
+  "repo": "https://github.com/ropensci/osmplotr",
+  "pkg": "osmplotr"
+}
