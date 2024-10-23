@@ -1,0 +1,12 @@
+{
+  "commit": {
+    "commit": "ff5f9f92b3cfe4b7081d16ad8c954923c94cc584",
+    "author": "mpadge <mark.padgham@email.com>",
+    "time": "2024-10-20 11:23:30",
+    "files": 3,
+    "merge": false,
+    "message": "sort .Rbuildignore [ci skip]\n"
+  },
+  "repo": "https://github.com/ropensci/osmplotr",
+  "pkg": "osmplotr"
+}
