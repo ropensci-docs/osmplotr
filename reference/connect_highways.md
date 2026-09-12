@@ -1,0 +1,90 @@
+# connect_highways
+
+Takes a list of highways names which must enclose an internal area, and
+returns a matrix of coordinates containing a sequence of OSM nodes which
+cyclically connect all highways. Will fail if the streets do not form a
+cycle.
+
+## Usage
+
+``` r
+connect_highways(highways, bbox, plot = FALSE)
+```
+
+## Arguments
+
+- highways:
+
+  A vector of highway names passed directly to the Overpass API.
+  Wildcards and whitespaces are \`.'; for other options see online help
+  for the overpass API.
+
+- bbox:
+
+  the bounding box for the map. A 2-by-2 matrix of 4 elements with
+  columns of min and max values, and rows of x and y values.
+
+- plot:
+
+  If `TRUE`, then all OSM data for each highway is plotted and the final
+  cycle overlaid.
+
+## Value
+
+A single matrix containing the lat-lon coordinates of the cyclic line
+connecting all given streets.
+
+## Note
+
+1.  `connect_highways` is primarily intended to provide a means to
+    define boundaries of groups which can then be highlighted using
+    [`add_osm_groups`](https://docs.ropensci.org/osmplotr/reference/add_osm_groups.md).
+
+2.  This function can not be guaranteed failsafe owing both to the
+    inherently unpredictable nature of OpenStreetMap, as well as to the
+    unknown relationships between named highways. The `plot` option
+    enables problematic cases to be examined and hopefully resolved. The
+    function is still experimental, so please help further improvements
+    by reporting any problems!
+
+## See also
+
+[`add_osm_groups`](https://docs.ropensci.org/osmplotr/reference/add_osm_groups.md).
+
+Other data-extraction:
+[`extract_osm_objects()`](https://docs.ropensci.org/osmplotr/reference/extract_osm_objects.md),
+[`get_bbox()`](https://docs.ropensci.org/osmplotr/reference/get_bbox.md)
+
+## Examples
+
+``` r
+bbox <- get_bbox (c (-0.13, 51.5, -0.11, 51.52))
+highways <- c (
+    "Monmouth.St", "Short.?s.Gardens", "Endell.St", "Long.Acre",
+    "Upper.Saint.Martin"
+)
+# Note that dots signify "anything", including whitespace and apostrophes,
+# and that '?' denotes optional previous character and so here matches
+# both "Shorts Gardens" and "Short's Gardens"
+if (FALSE) { # \dontrun{
+highways1 <- connect_highways (highways = highways, bbox = bbox, plot = TRUE)
+highways <- c ("Endell.St", "High.Holborn", "Drury.Lane", "Long.Acre")
+highways2 <- connect_highways (highways = highways, bbox = bbox, plot = TRUE)
+} # }
+
+# Use of 'connect_highways' to highlight a region on a map
+map <- osm_basemap (bbox = bbox, bg = "gray20")
+# dat_B <- extract_osm_data (key = "building",
+#                            value = "!residential",
+#                            bbox = bbox)
+# Those data are part of 'osmplotr':
+dat_BNR <- london$dat_BNR # Non-residential buildings
+if (FALSE) { # \dontrun{
+groups <- list (highways1, highways2)
+map <- add_osm_groups (map,
+    obj = dat_BNR, groups = groups,
+    cols = c ("red", "blue"), bg = "gray40"
+)
+print_osm_map (map)
+} # }
+```
